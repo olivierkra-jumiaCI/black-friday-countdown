@@ -1,66 +1,155 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
   @keyframes bf-pulse {
-    0%   { transform: scale(1);   opacity: 1; }
+    0%   { transform: scale(1);    opacity: 1; }
     50%  { transform: scale(1.15); opacity: 0.7; }
-    100% { transform: scale(1);   opacity: 1; }
+    100% { transform: scale(1);    opacity: 1; }
   }
+
   #bf-seconds {
     animation: bf-pulse 1s ease-in-out infinite;
     display: inline-block;
   }
+
+  #bf-countdown {
+    background: #0c0b0b;
+    color: #ffffff;
+    text-align: center;
+    padding: clamp(30px, 6vw, 60px) clamp(12px, 4vw, 20px);
+    min-height: 400px;
+    box-sizing: border-box;
+    font-family: Ubuntu, Arial, sans-serif;
+  }
+
+  #bf-subtitle {
+    font-size: clamp(13px, 2.5vw, 18px);
+    font-weight: bold;
+    margin: 0 0 12px;
+  }
+
+  #bf-title {
+    font-size: clamp(28px, 6vw, 63px);
+    font-weight: bold;
+    color: #ff6b00;
+    margin: 0 0 clamp(20px, 4vw, 40px);
+    line-height: 1.2;
+  }
+
+  #bf-timer-block {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 24px;
+    padding: clamp(14px, 3vw, 36px) clamp(10px, 4vw, 56px);
+    gap: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .bf-unit {
+    text-align: center;
+    min-width: clamp(52px, 13vw, 110px);
+  }
+
+  .bf-num {
+    font-size: clamp(38px, 10vw, 90px);
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .bf-num-sec {
+    font-size: clamp(38px, 10vw, 90px);
+    font-weight: bold;
+    color: #ff6b00;
+    line-height: 1;
+  }
+
+  .bf-label {
+    font-size: clamp(8px, 1.5vw, 13px);
+    color: #bbbbbb;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .bf-sep {
+    font-size: clamp(32px, 8vw, 80px);
+    color: #ff6b00;
+    padding: 0 clamp(6px, 1.5vw, 14px);
+    line-height: 1;
+    margin-bottom: clamp(12px, 2vw, 18px);
+  }
+
+  #bf-cta {
+    display: inline-block;
+    margin-top: clamp(20px, 4vw, 35px);
+    background: #ff941f;
+    color: #111111;
+    text-decoration: none;
+    font-size: clamp(11px, 2vw, 14px);
+    font-weight: bold;
+    padding: clamp(12px, 2vw, 16px) clamp(20px, 4vw, 32px);
+    border-radius: 30px;
+  }
+
+  #bf-hashtag {
+    font-size: clamp(10px, 1.8vw, 12px);
+    font-weight: bold;
+    margin-top: 30px;
+  }
 </style>
 
-<div id="bf-countdown" style="background:#0c0b0b;color:#ffffff;text-align:center;padding:60px 20px;min-height:400px;box-sizing:border-box;font-family:Ubuntu,Arial,sans-serif;">
+<div id="bf-countdown">
 
-  <p style="font-size:18px;font-weight:bold;margin:0 0 14px;">
+  <p id="bf-subtitle">
     Rompre avec l'habitude de se contenter de moins...
   </p>
 
-  <h1 style="font-size:63px;font-weight:bold;color:#ff6b00;margin:0 0 40px;line-height:1.2;">
+  <h1 id="bf-title">
     🛒 Tes rêves. Ton prix. Ton moment.
   </h1>
 
-  <!-- Bloc unifié comme image 1 -->
-  <div style="display:inline-flex;justify-content:center;align-items:center;background:#1a1a1a;border-radius:24px;padding:36px 56px;gap:0;">
+  <div id="bf-timer-block">
 
-    <div style="text-align:center;min-width:110px;">
-      <div id="bf-days" style="font-size:90px;font-weight:bold;line-height:1;">00</div>
-      <small style="font-size:13px;color:#bbbbbb;letter-spacing:1px;">JOURS</small>
+    <div class="bf-unit">
+      <div id="bf-days" class="bf-num">00</div>
+      <small class="bf-label">JOURS</small>
     </div>
 
-    <div style="font-size:80px;color:#ff6b00;padding:0 14px;line-height:1;margin-bottom:18px;">:</div>
+    <div class="bf-sep">:</div>
 
-    <div style="text-align:center;min-width:110px;">
-      <div id="bf-hours" style="font-size:90px;font-weight:bold;line-height:1;">00</div>
-      <small style="font-size:13px;color:#bbbbbb;letter-spacing:1px;">HEURES</small>
+    <div class="bf-unit">
+      <div id="bf-hours" class="bf-num">00</div>
+      <small class="bf-label">HEURES</small>
     </div>
 
-    <div style="font-size:80px;color:#ff6b00;padding:0 14px;line-height:1;margin-bottom:18px;">:</div>
+    <div class="bf-sep">:</div>
 
-    <div style="text-align:center;min-width:110px;">
-      <div id="bf-minutes" style="font-size:90px;font-weight:bold;line-height:1;">00</div>
-      <small style="font-size:13px;color:#bbbbbb;letter-spacing:1px;">MINUTES</small>
+    <div class="bf-unit">
+      <div id="bf-minutes" class="bf-num">00</div>
+      <small class="bf-label">MINUTES</small>
     </div>
 
-    <div style="font-size:80px;color:#ff6b00;padding:0 14px;line-height:1;margin-bottom:18px;">:</div>
+    <div class="bf-sep">:</div>
 
-    <div style="text-align:center;min-width:110px;">
-      <div style="font-size:90px;font-weight:bold;color:#ff6b00;line-height:1;">
+    <div class="bf-unit">
+      <div class="bf-num-sec">
         <span id="bf-seconds">00</span>
       </div>
-      <small style="font-size:13px;color:#bbbbbb;letter-spacing:1px;">SECONDES</small>
+      <small class="bf-label">SECONDES</small>
     </div>
 
   </div>
 
   <br>
 
-  <a href="https://www.jumia.ci/mlp-dream-list/"
-     style="display:inline-block;margin-top:35px;background:#ff941f;color:#111111;text-decoration:none;font-size:14px;font-weight:bold;padding:16px 32px;border-radius:30px;">
+  <a id="bf-cta" href="https://www.jumia.ci/mlp-dream-list/">
     Créez votre liste de rêves pour le Black Friday
   </a>
 
-  <p style="font-size:12px;font-weight:bold;margin-top:35px;">
+  <p id="bf-hashtag">
     <span style="color:#ff6b00;">&#9733;</span> #JumiaBlackFriday
   </p>
 
